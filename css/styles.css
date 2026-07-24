@@ -74,6 +74,14 @@ body {
   letter-spacing: -0.02em;
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .compat {
   margin: 0;
   font-size: 0.8rem;
@@ -82,6 +90,16 @@ body {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
+}
+
+.btn-install {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff8f2;
+  border: none;
+  white-space: nowrap;
 }
 
 .compat.is-ok { color: var(--ok); border-color: rgba(31, 122, 77, 0.35); }

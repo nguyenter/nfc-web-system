@@ -1,5 +1,6 @@
 import { findBank } from "./banks.js";
 import { buildVietQrImageUrl, formatMoney, parsePayUrl } from "./pay-link.js";
+import { registerServiceWorker } from "./pwa.js";
 
 const els = {
   empty: document.getElementById("emptyState"),
@@ -102,4 +103,5 @@ document.getElementById("btnCopyAll")?.addEventListener("click", () => {
   copyText(lines.join("\n"), "thông tin CK");
 });
 
+registerServiceWorker();
 render();

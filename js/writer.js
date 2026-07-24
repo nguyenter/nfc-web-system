@@ -7,6 +7,7 @@ import {
   normalizeAccountName,
 } from "./pay-link.js";
 import { eraseNfc, isNfcSupported, readNfc, writeUrlToNfc } from "./nfc.js";
+import { registerServiceWorker, setupInstallButton } from "./pwa.js";
 
 const els = {
   compatBadge: document.getElementById("compatBadge"),
@@ -193,6 +194,8 @@ function bind() {
   });
 }
 
+registerServiceWorker();
+setupInstallButton();
 fillBanks();
 bind();
 initCompat();

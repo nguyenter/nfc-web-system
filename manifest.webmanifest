@@ -1,0 +1,35 @@
+{
+  "name": "TapPay — NFC chuyển khoản",
+  "short_name": "TapPay",
+  "description": "Ghi thông tin nhận tiền vào thẻ NFC. Người khác chạm thẻ → mở trang chuyển khoản / VietQR.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#e8efe9",
+  "theme_color": "#0f3d3a",
+  "lang": "vi",
+  "dir": "ltr",
+  "categories": ["finance", "utilities"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
