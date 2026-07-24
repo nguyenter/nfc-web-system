@@ -16,6 +16,7 @@ const els = {
   name: document.getElementById("name"),
   amount: document.getElementById("amount"),
   memo: document.getElementById("memo"),
+  previewBox: document.getElementById("previewBox"),
   previewUrl: document.getElementById("previewUrl"),
   previewBytes: document.getElementById("previewBytes"),
   previewQr: document.getElementById("previewQr"),
@@ -61,7 +62,8 @@ function refreshPreview() {
   try {
     const payload = currentPayload();
     if (!payload.bin || !payload.acc || !payload.name) {
-      els.previewUrl.textContent = "Điền ngân hàng, STK và tên chủ TK…";
+      els.previewBox.hidden = true;
+      els.previewUrl.textContent = "";
       els.previewBytes.textContent = "";
       els.previewQr.removeAttribute("src");
       els.previewQr.hidden = true;
@@ -69,6 +71,7 @@ function refreshPreview() {
     }
     const url = buildPayUrl(payload);
     const bytes = estimateNdefUrlBytes(url);
+    els.previewBox.hidden = false;
     els.previewUrl.textContent = url;
     els.previewBytes.textContent =
       bytes > 180
@@ -79,8 +82,11 @@ function refreshPreview() {
     els.previewQr.hidden = false;
     return url;
   } catch (err) {
+    // Đã điền form nhưng chưa hợp lệ (STK/tên) — vẫn hiện để báo lỗi
+    els.previewBox.hidden = false;
     els.previewUrl.textContent = err.message || String(err);
     els.previewBytes.textContent = "";
+    els.previewQr.removeAttribute("src");
     els.previewQr.hidden = true;
     return null;
   }

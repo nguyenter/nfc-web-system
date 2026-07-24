@@ -1,5 +1,5 @@
 /* TapPay service worker — cache shell để mở offline (ghi NFC vẫn cần mạng/HTTPS). */
-const CACHE = "tappay-v1";
+const CACHE = "tappay-v2";
 const PRECACHE = [
   "./",
   "./index.html",
