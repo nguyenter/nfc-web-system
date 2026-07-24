@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f3d3a" />
+  <meta name="description" content="Thông tin chuyển khoản từ thẻ NFC TapPay." />
+  <title>Chuyển khoản — TapPay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="pay-page">
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">TapPay</span>
+    </a>
+  </header>
+
+  <main class="pay-main">
+    <div id="emptyState" class="workspace" hidden>
+      <h1 class="section-title">Thiếu thông tin</h1>
+      <p class="section-desc">Link không chứa dữ liệu chuyển khoản. Hãy ghi lại thẻ từ trang TapPay.</p>
+      <a class="btn btn-primary" href="./">Về trang ghi thẻ</a>
+    </div>
+
+    <article id="payCard" class="pay-card" hidden>
+      <p class="pay-eyebrow">Chạm thẻ · Chuyển khoản</p>
+      <h1 class="pay-title" id="payBank">—</h1>
+      <p class="pay-name" id="payName">—</p>
+
+      <div class="pay-row">
+        <div>
+          <span class="pay-label">Số tài khoản</span>
+          <p class="pay-value mono" id="payAcc">—</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="acc">Copy</button>
+      </div>
+
+      <div class="pay-row" id="amountRow" hidden>
+        <div>
+          <span class="pay-label">Số tiền</span>
+          <p class="pay-value" id="payAmount">—</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="amount">Copy</button>
+      </div>
+
+      <div class="pay-row" id="memoRow" hidden>
+        <div>
+          <span class="pay-label">Nội dung</span>
+          <p class="pay-value" id="payMemo">—</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" data-copy="memo">Copy</button>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block" id="btnCopyAll">Copy toàn bộ thông tin</button>
+
+      <div class="pay-qr-wrap">
+        <p class="pay-label">Hoặc quét VietQR trong app ngân hàng</p>
+        <img id="payQr" class="pay-qr" alt="VietQR" />
+      </div>
+    </article>
+  </main>
+
+  <div class="toast" id="toast" hidden role="status"></div>
+
+  <script type="module" src="js/pay.js"></script>
+</body>
+</html>

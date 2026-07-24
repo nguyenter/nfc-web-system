@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f3d3a" />
+  <meta name="description" content="Ghi thông tin chuyển khoản vào thẻ NFC — người khác chỉ cần chạm thẻ." />
+  <title>TapPay — Ghi NFC chuyển khoản</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">TapPay</span>
+    </a>
+    <p class="compat" id="compatBadge">Đang kiểm tra…</p>
+  </header>
+
+  <main>
+    <section class="hero hero-compact">
+      <h1 class="hero-brand">TapPay</h1>
+      <p class="hero-lead">Lưu STK vào thẻ NFC. Người khác chạm thẻ → mở trang chuyển khoản, không cần đưa mã QR.</p>
+    </section>
+
+    <section class="workspace" id="workspace">
+      <h2 class="section-title">Thông tin nhận tiền</h2>
+      <p class="section-desc">Điền form, rồi ghi lên thẻ bằng <strong>Chrome Android</strong>. iPhone vẫn mở được link khi chạm thẻ đã ghi.</p>
+
+      <label class="field">
+        <span>Ngân hàng</span>
+        <select id="bank">
+          <option value="">— Chọn ngân hàng —</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Số tài khoản</span>
+        <input id="acc" type="text" inputmode="numeric" autocomplete="off" placeholder="0123456789" />
+      </label>
+
+      <label class="field">
+        <span>Tên chủ tài khoản</span>
+        <input id="name" type="text" autocomplete="name" placeholder="NGUYEN VAN A" />
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Số tiền (tuỳ chọn)</span>
+          <input id="amount" type="text" inputmode="numeric" placeholder="100000" />
+        </label>
+        <label class="field">
+          <span>Nội dung CK (tuỳ chọn)</span>
+          <input id="memo" type="text" placeholder="Thanh toan cafe" maxlength="50" />
+        </label>
+      </div>
+
+      <div class="preview-box">
+        <p class="preview-label">Link sẽ ghi vào thẻ</p>
+        <code class="preview-url" id="previewUrl">…</code>
+        <p class="preview-bytes" id="previewBytes"></p>
+        <img class="preview-qr" id="previewQr" alt="Xem trước VietQR" hidden />
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary btn-block" id="btnWrite" disabled>Ghi vào thẻ NFC</button>
+        <button type="button" class="btn btn-ghost btn-block" id="btnPreview">Xem trang người nhận</button>
+      </div>
+
+      <div class="status" id="status" role="status" aria-live="polite">
+        <span class="status-dot"></span>
+        <span class="status-text" id="statusText">Sẵn sàng khi thiết bị hỗ trợ ghi NFC.</span>
+      </div>
+
+      <details class="advanced">
+        <summary>Đọc / xóa thẻ</summary>
+        <div class="actions tight">
+          <button type="button" class="btn btn-ghost" id="btnRead" disabled>Đọc thẻ</button>
+          <button type="button" class="btn btn-danger" id="btnErase" disabled>Xóa thẻ</button>
+        </div>
+        <article class="result" id="resultCard" hidden>
+          <pre class="result-body" id="resultBody"></pre>
+        </article>
+      </details>
+    </section>
+
+    <section class="notes">
+      <h2 class="section-title">Cách hoạt động</h2>
+      <ol class="note-list">
+        <li>Bạn ghi <strong>link HTTPS</strong> chứa STK lên thẻ (Android Chrome).</li>
+        <li>Người khác chạm thẻ → điện thoại mở trang thanh toán (iOS &amp; Android).</li>
+        <li>Họ copy STK / số tiền hoặc quét VietQR trên màn hình trong app ngân hàng.</li>
+      </ol>
+      <p class="section-desc" style="margin-top:1rem;margin-bottom:0">
+        Nên dùng thẻ <strong>NTAG215/216</strong>. Deploy lên Netlify/Cloudflare (HTTPS) trước khi ghi thẻ thật — link trên thẻ phải trỏ đúng domain public.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>TapPay · Web NFC + VietQR · không backend</p>
+  </footer>
+
+  <script type="module" src="js/writer.js"></script>
+</body>
+</html>
